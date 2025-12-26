@@ -1,5 +1,5 @@
 {
-  "name": "react-editor-ultimate",
+  "name": "react-lexical-text-editor",
   "version": "1.0.0",
   "type": "module",
   "description": "A rich text editor based on Lexical with images, tables, links, etc.",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iamduy/react-editor-ultimate.git"
+    "url": "https://github.com/iamduy/react-lexical-text-editor.git"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

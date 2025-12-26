@@ -6,6 +6,8 @@ import terser from '@rollup/plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import url from '@rollup/plugin-url';
 import postcss from 'rollup-plugin-postcss';
+import postcssUrl from 'postcss-url';
+import postcssImport from 'postcss-import';
 
 export default [
   {
@@ -35,8 +37,17 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
       }),
+      postcss({
+        extract: true,
+        minimize: true,
+        plugins: [
+          postcssImport(),
+          postcssUrl({
+            url: 'inline',
+          }),
+        ],
+      }),
       terser(),
-      postcss(),
     ],
     external: ['react', 'react-dom'],
     onwarn(warning, warn) {

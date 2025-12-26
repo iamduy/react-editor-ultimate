@@ -16,6 +16,18 @@ A powerful, feature-rich WYSIWYG editor built with [Lexical](https://lexical.dev
 - ♿ **Accessible** - Keyboard navigation and screen reader support
 - 🎯 **TypeScript** - Full TypeScript support with type definitions
 
+## 🎮 Live Demo
+
+Experience the full capabilities of the editor in our live demo environment:
+[**Live Demo Website**](https://demo-react-lexical-text-editor.vercel.app/)
+
+Try out features like:
+
+- Rich text formatting
+- Image upload and management
+- Tables and lists
+- Responsive design
+
 ## 📦 Installation
 
 ```bash
@@ -59,14 +71,14 @@ pnpm add react-lexical-text-editor
 ### Basic Usage
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css'; // Import styles
 
 function App() {
   const [content, setContent] = useState<string>('');
 
   return (
-    <ReactLexicalEditor
+    <ReactLexicalTextEditor
       value={content}
       onChange={(html) => setContent(html)}
       placeholder='Start typing...'
@@ -78,7 +90,7 @@ function App() {
 ### With Initial Content
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css';
 
 function App() {
@@ -88,7 +100,7 @@ function App() {
   `;
 
   return (
-    <ReactLexicalEditor
+    <ReactLexicalTextEditor
       value={initialContent}
       onChange={(html) => console.log('Content changed:', html)}
     />
@@ -99,7 +111,7 @@ function App() {
 ### With Image Upload
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css';
 
 function App() {
@@ -123,7 +135,7 @@ function App() {
   };
 
   return (
-    <ReactLexicalEditor
+    <ReactLexicalTextEditor
       onUpload={handleImageUpload}
       onChange={(html) => console.log(html)}
     />
@@ -134,12 +146,12 @@ function App() {
 ### With Custom Styling
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css';
 
 function App() {
   return (
-    <ReactLexicalEditor
+    <ReactLexicalTextEditor
       className='my-custom-editor'
       style={{
         minHeight: '300px',
@@ -155,7 +167,7 @@ function App() {
 ### With Loading State
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css';
 
 function App() {
@@ -176,7 +188,7 @@ function App() {
 
   return (
     <div>
-      <ReactLexicalEditor
+      <ReactLexicalTextEditor
         value={content}
         onChange={setContent}
         loading={isLoading}
@@ -297,7 +309,7 @@ Override default styles using CSS:
 ### Form Integration (React Hook Form)
 
 ```tsx
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import { useForm, Controller } from 'react-hook-form';
 import 'react-lexical-text-editor/dist/index.css';
 
@@ -323,7 +335,7 @@ function MyForm() {
         control={control}
         defaultValue=''
         render={({ field }) => (
-          <ReactLexicalEditor
+          <ReactLexicalTextEditor
             value={field.value}
             onChange={field.onChange}
             placeholder='Write your content...'
@@ -341,7 +353,7 @@ function MyForm() {
 
 ```tsx
 import { create } from 'zustand';
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import 'react-lexical-text-editor/dist/index.css';
 
 interface EditorStore {
@@ -357,7 +369,7 @@ const useEditorStore = create<EditorStore>((set) => ({
 function Editor() {
   const { content, setContent } = useEditorStore();
 
-  return <ReactLexicalEditor value={content} onChange={setContent} />;
+  return <ReactLexicalTextEditor value={content} onChange={setContent} />;
 }
 ```
 
@@ -370,9 +382,11 @@ import dynamic from 'next/dynamic';
 import 'react-lexical-text-editor/dist/index.css';
 
 // Dynamically import to avoid SSR issues
-const ReactLexicalEditor = dynamic(
+const ReactLexicalTextEditor = dynamic(
   () =>
-    import('react-lexical-text-editor').then((mod) => mod.ReactLexicalEditor),
+    import('react-lexical-text-editor').then(
+      (mod) => mod.ReactLexicalTextEditor
+    ),
   {
     ssr: false,
     loading: () => <div>Loading editor...</div>,
@@ -380,7 +394,7 @@ const ReactLexicalEditor = dynamic(
 );
 
 export default function Page() {
-  return <ReactLexicalEditor onChange={(html) => console.log(html)} />;
+  return <ReactLexicalTextEditor onChange={(html) => console.log(html)} />;
 }
 ```
 
@@ -388,7 +402,7 @@ export default function Page() {
 
 ```tsx
 import { useState, useEffect } from 'react';
-import { ReactLexicalEditor } from 'react-lexical-text-editor';
+import { ReactLexicalTextEditor } from 'react-lexical-text-editor';
 import { useDebouncedCallback } from 'use-debounce';
 import 'react-lexical-text-editor/dist/index.css';
 
@@ -428,7 +442,7 @@ function AutoSaveEditor() {
           !isSaving &&
           `Last saved: ${lastSaved.toLocaleTimeString()}`}
       </div>
-      <ReactLexicalEditor
+      <ReactLexicalTextEditor
         value={content}
         onChange={handleChange}
         loading={isSaving}
@@ -497,7 +511,7 @@ function BlogEditor() {
         onChange={(e) => setPost({ ...post, title: e.target.value })}
         placeholder='Post title'
       />
-      <ReactLexicalEditor
+      <ReactLexicalTextEditor
         value={post.content}
         onChange={(html) => setPost({ ...post, content: html })}
         onUpload={uploadToCloudinary}
@@ -516,7 +530,7 @@ function CommentEditor({ onSubmit }: { onSubmit: (html: string) => void }) {
 
   return (
     <div>
-      <ReactLexicalEditor
+      <ReactLexicalTextEditor
         value={comment}
         onChange={setComment}
         placeholder='Write a comment...'
@@ -544,7 +558,7 @@ function EmailTemplateEditor() {
   return (
     <div>
       <h2>Email Template Editor</h2>
-      <ReactLexicalEditor
+      <ReactLexicalTextEditor
         value={template}
         onChange={setTemplate}
         placeholder='Design your email template...'
@@ -618,7 +632,8 @@ Use dynamic import with `ssr: false`:
 
 ```tsx
 const Editor = dynamic(
-  () => import('react-lexical-text-editor').then((m) => m.ReactLexicalEditor),
+  () =>
+    import('react-lexical-text-editor').then((m) => m.ReactLexicalTextEditor),
   { ssr: false }
 );
 ```
@@ -644,7 +659,7 @@ const handleUpload = async (file: File) => {
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © SanMario
 
 ## 🤝 Contributing
 

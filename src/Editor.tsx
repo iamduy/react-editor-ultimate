@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 import { useSettings } from './context/SettingsContext';
 import { useSharedHistoryContext } from './context/SharedHistoryContext';
+import AutoLinkPlugin from './plugins/AutoLinkPlugin';
 import DragDropPlugin from './plugins/DragDropPlugin';
 import FloatingLinkEditorPlugin from './plugins/FloatingLinkEditorPlugin';
 import ImagesPlugin from './plugins/ImagesPlugin';
@@ -96,6 +97,7 @@ const Editor = ({
             onChange?.(html);
           }}
         />
+        <AutoLinkPlugin />
       </div>
     </div>
   );

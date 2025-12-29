@@ -1349,7 +1349,7 @@ button.action-button:disabled {
   border-top-right-radius: 10px;
   vertical-align: middle;
   overflow: auto;
-  height: 50px;
+  flex-wrap: wrap;
   border-bottom: 1px solid #ccc;
 }
 
